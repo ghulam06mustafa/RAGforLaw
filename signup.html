@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create your RAGforLaw legal research account.">
+    <title>Create Account | RAGforLaw</title>
+    <link rel="stylesheet" href="css/signup.css">
+    <script src="js/auth.js" defer></script>
+    <script src="js/signup.js" defer></script>
+</head>
+<body data-auth-page="guest">
+
+<main class="auth-layout">
+    <section class="auth-visual">
+        <a href="index.html" class="brand">
+            <span class="brand-mark">R</span>
+            <span class="brand-copy">
+                <strong>RAGforLaw</strong>
+                <small>Legal Intelligence</small>
+            </span>
+        </a>
+
+        <div class="visual-content">
+            <span class="eyebrow">YOUR LEGAL RESEARCH WORKSPACE</span>
+            <h1>Make legal research<br><em>more accessible.</em></h1>
+            <p>
+                Create an account to explore legal documents, ask questions,
+                and organize your research in one workspace.
+            </p>
+
+            <div class="benefit-list">
+                <div class="benefit">
+                    <span class="benefit-icon">▧</span>
+                    <div>
+                        <strong>Explore legal documents</strong>
+                        <p>Work with uploaded legal PDFs.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">⌕</span>
+                    <div>
+                        <strong>Ask legal questions</strong>
+                        <p>Find relevant information in available documents.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">§</span>
+                    <div>
+                        <strong>Keep research organized</strong>
+                        <p>Use a dedicated legal research workspace.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="visual-footer">Research carefully. Verify every legal source.</p>
+    </section>
+
+    <section class="auth-main">
+        <a href="index.html" class="mobile-brand">
+            <span class="brand-mark">R</span>
+            <span class="brand-copy">
+                <strong>RAGforLaw</strong>
+                <small>Legal Intelligence</small>
+            </span>
+        </a>
+
+        <div class="auth-card">
+            <span class="eyebrow">GET STARTED</span>
+            <h2>Create your account</h2>
+            <p class="auth-description">
+                Set up your account to access your legal research workspace.
+            </p>
+
+            <form id="signupForm">
+                <label for="username">Username</label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Choose a username"
+                    autocomplete="username"
+                    minlength="3"
+                    maxlength="50"
+                    required>
+
+                <label for="email">Email address</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required>
+
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Create a password"
+                    autocomplete="new-password"
+                    required>
+
+                <p class="password-hint">
+                    Use the password requirements configured by your application.
+                </p>
+
+                <button type="submit" id="signupBtn" class="submit-btn">
+                    <span id="signupBtnText">Create Account</span>
+                    <span aria-hidden="true">→</span>
+                </button>
+
+                <div id="message" class="form-message error" role="alert" aria-live="polite"></div>
+                <div id="success" class="form-message success" role="status" aria-live="polite"></div>
+            </form>
+
+            <div class="auth-divider"><span>ALREADY REGISTERED?</span></div>
+
+            <p class="login-prompt">
+                Already have an account?
+                <a href="login.html">Sign in <span aria-hidden="true">→</span></a>
+            </p>
+
+            <p class="auth-disclaimer">
+                RAGforLaw provides legal research assistance, not professional legal advice.
+            </p>
+        </div>
+
+        <footer class="auth-footer">
+            <a href="index.html">← Back to home</a>
+            <span>© 2026 RAGforLaw</span>
+        </footer>
+    </section>
+</main>
+
+</body>
+</html>

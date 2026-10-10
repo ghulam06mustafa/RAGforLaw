@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Organize your legal research and notes in RAGforLaw.">
+    <title>Personal Workspace | RAGforLaw</title>
+
+    <link rel="stylesheet" href="css/workspace.css">
+    <script src="js/auth.js" defer></script>
+    <script src="js/workspace.js" defer></script>
+</head>
+
+<body data-auth-page="protected">
+<div class="app-layout">
+
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <div class="brand-mark">R</div>
+            <div class="brand-text">
+                <h2>RAGforLaw</h2>
+                <span>Legal Intelligence</span>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <span class="sidebar-label">WORKSPACE</span>
+            <nav class="navigation" aria-label="Main navigation">
+                <a href="dashboard.html" class="nav-link">
+                    <span class="nav-icon">⌂</span><span>Dashboard</span>
+                </a>
+                <a href="legal-research.html" class="nav-link">
+                    <span class="nav-icon">⌕</span><span>Legal Research</span>
+                </a>
+                <a href="case-analysis.html" class="nav-link">
+                    <span class="nav-icon">▤</span><span>Case Analysis</span>
+                </a>
+                <a href="document-assistance.html" class="nav-link">
+                    <span class="nav-icon">▧</span><span>Document Assistance</span>
+                </a>
+                <a href="workspace.html" class="nav-link active" aria-current="page">
+                    <span class="nav-icon">▣</span><span>Personal Workspace</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-note">
+                <span class="note-symbol">§</span>
+                <p>Research carefully. Verify every legal source.</p>
+            </div>
+
+            <div class="sidebar-user">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <div class="user-details">
+                    <strong id="userName">User</strong>
+                    <span>Legal Assistant</span>
+                </div>
+                <button type="button" id="logoutBtn" class="logout-btn"
+                        aria-label="Log out" title="Log out">↗</button>
+            </div>
+        </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="main-content">
+        <header class="topbar">
+            <button type="button" id="menuBtn" class="menu-btn"
+                    aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+            <div class="breadcrumb">
+                <span>Workspace</span>
+                <span class="breadcrumb-divider">/</span>
+                <strong>Personal Workspace</strong>
+            </div>
+
+            <div class="topbar-status">
+                <span class="status-dot"></span>
+                <span>Personal workspace</span>
+            </div>
+        </header>
+
+        <div class="page-container">
+            <section class="welcome-section">
+                <div>
+                    <span class="eyebrow">YOUR PERSONAL LEGAL SPACE</span>
+                    <h1>Keep your legal work <em>organized.</em></h1>
+                    <p>Save important research, record notes, and keep track
+                       of your recent workspace activity.</p>
+                    <a href="legal-research.html" class="primary-btn">
+                        Start legal research <span>→</span>
+                    </a>
+                </div>
+
+                <div class="welcome-seal" aria-hidden="true">
+                    <div class="seal-inner">
+                        <span>§</span>
+                        <small>LEX</small>
+                    </div>
+                </div>
+            </section>
+
+            <section class="stats-grid" aria-label="Workspace overview">
+                <article class="stat-card">
+                    <span class="stat-icon">⌕</span>
+                    <div>
+                        <span class="stat-label">Saved research</span>
+                        <h2 id="savedCount">0</h2>
+                    </div>
+                </article>
+                <article class="stat-card">
+                    <span class="stat-icon">✎</span>
+                    <div>
+                        <span class="stat-label">Personal notes</span>
+                        <h2 id="notesCount">0</h2>
+                    </div>
+                </article>
+                <article class="stat-card">
+                    <span class="stat-icon">◷</span>
+                    <div>
+                        <span class="stat-label">Recent activity</span>
+                        <h2 id="activityCount">0</h2>
+                    </div>
+                </article>
+            </section>
+
+            <section class="workspace-grid">
+                <div class="panel">
+                    <div class="section-heading">
+                        <div>
+                            <span class="eyebrow">YOUR COLLECTION</span>
+                            <h2>Saved research</h2>
+                            <p>Keep useful legal questions for later reference.</p>
+                        </div>
+                    </div>
+
+                    <form id="saveResearchForm" class="workspace-form">
+                        <label for="researchTitle">Research title</label>
+                        <input id="researchTitle" maxlength="150"
+                               placeholder="e.g. Workplace harassment law" required>
+
+                        <label for="researchDetails">Research question or reference</label>
+                        <textarea id="researchDetails" rows="3" maxlength="5000"
+                                  placeholder="Add your question, key finding, or reference..."
+                                  required></textarea>
+
+                        <button class="primary-btn" type="submit">
+                            Save research <span>+</span>
+                        </button>
+                        <p id="researchStatus" class="status-message" role="status"></p>
+                    </form>
+
+                    <div id="savedResearchList" class="item-list"></div>
+                    <div id="researchEmpty" class="empty-state">
+                        <span>⌕</span>
+                        <h3>No saved research yet</h3>
+                        <p>Add a research question above to start your collection.</p>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="section-heading">
+                        <div>
+                            <span class="eyebrow">PRIVATE NOTES</span>
+                            <h2>My notes</h2>
+                            <p>Record reminders and observations for your work.</p>
+                        </div>
+                    </div>
+
+                    <form id="noteForm" class="workspace-form">
+                        <label for="noteTitle">Note title</label>
+                        <input id="noteTitle" maxlength="150"
+                               placeholder="Enter a title" required>
+
+                        <label for="noteContent">Note</label>
+                        <textarea id="noteContent" rows="4" maxlength="10000"
+                                  placeholder="Write your note..." required></textarea>
+
+                        <button class="primary-btn" type="submit">
+                            Save note <span>+</span>
+                        </button>
+                        <p id="noteStatus" class="status-message" role="status"></p>
+                    </form>
+
+                    <div id="notesList" class="item-list"></div>
+                    <div id="notesEmpty" class="empty-state">
+                        <span>✎</span>
+                        <h3>No notes yet</h3>
+                        <p>Your saved notes will appear here.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel activity-panel">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">WORKSPACE HISTORY</span>
+                        <h2>Recent activity</h2>
+                        <p>Recent actions recorded in this browser.</p>
+                    </div>
+                    <button type="button" id="clearActivityBtn" class="text-button">
+                        Clear history
+                    </button>
+                </div>
+
+                <div id="activityList" class="activity-list"></div>
+                <div id="activityEmpty" class="empty-state">
+                    <span>◷</span>
+                    <h3>No activity recorded</h3>
+                    <p>Saving or deleting workspace items will appear here.</p>
+                </div>
+            </section>
+
+            <footer class="page-footer">
+                <span>RAGforLaw</span>
+                <span>Legal research assistance · Verify before relying</span>
+            </footer>
+        </div>
+    </main>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

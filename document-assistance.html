@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document Assistance | RAGforLaw</title>
+    <link rel="stylesheet" href="css/document-assistance.css">
+    <script src="js/auth.js" defer></script>
+    <script src="js/document-assistance.js" defer></script>
+</head>
+<body data-auth-page="protected">
+<div class="app-layout">
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <div class="brand-mark">R</div>
+            <div class="brand-text"><h2>RAGforLaw</h2><span>Legal Intelligence</span></div>
+        </div>
+
+        <div class="sidebar-section">
+            <span class="sidebar-label">WORKSPACE</span>
+            <nav class="navigation" aria-label="Main navigation">
+                <a href="dashboard.html" class="nav-link"><span class="nav-icon">⌂</span><span>Dashboard</span></a>
+                <a href="legal-research.html" class="nav-link"><span class="nav-icon">⌕</span><span>Legal Research</span></a>
+                <a href="case-analysis.html" class="nav-link"><span class="nav-icon">▤</span><span>Case Analysis</span></a>
+                <a href="document-assistance.html" class="nav-link active" aria-current="page"><span class="nav-icon">▧</span><span>Document Assistance</span></a>
+                <a href="workspace.html" class="nav-link"><span class="nav-icon">▣</span><span>Personal Workspace</span></a>
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-note"><span class="note-symbol">§</span><p>Review documents carefully. Verify legal references.</p></div>
+            <div class="sidebar-user">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <div class="user-details"><strong id="userName">User</strong><span>Legal Researcher</span></div>
+                <button type="button" id="logoutBtn" class="logout-btn" aria-label="Log out">↗</button>
+            </div>
+        </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="main-content">
+        <header class="topbar">
+            <button type="button" id="menuBtn" class="menu-btn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+            <div class="breadcrumb"><span>Workspace</span><span class="breadcrumb-divider">/</span><strong>Document Assistance</strong></div>
+            <div class="topbar-status"><span class="status-dot"></span><span>Document workspace</span></div>
+        </header>
+
+        <div class="page-container">
+            <section class="page-intro">
+                <span class="eyebrow">LEGAL DOCUMENT WORKSPACE</span>
+                <h1>Work with legal documents.<br><em>More clearly and efficiently.</em></h1>
+                <p>Prepare document summaries, extract important information, and draft complaint or application text for review.</p>
+            </section>
+
+            <section class="document-grid">
+                <div class="document-panel">
+                    <div class="section-heading">
+                        <div><span class="eyebrow">STEP 01</span><h2>Select a document</h2></div>
+                        <span class="step-number">01</span>
+                    </div>
+
+                    <form id="documentForm">
+                        <label class="upload-dropzone" for="documentFile">
+                            <span class="upload-icon">↑</span>
+                            <strong>Choose a legal PDF</strong>
+                            <span>Click to browse your computer</span>
+                            <small>PDF files only</small>
+                        </label>
+                        <input type="file" id="documentFile" accept=".pdf,application/pdf" hidden>
+
+                        <div id="selectedFile" class="selected-file" hidden>
+                            <div class="file-icon">PDF</div>
+                            <div class="file-details"><strong id="fileName"></strong><span id="fileSize"></span></div>
+                            <button type="button" id="removeFileBtn" class="remove-file-btn" aria-label="Remove selected file">×</button>
+                        </div>
+
+                        <label for="documentTask">What would you like to do?</label>
+                        <select id="documentTask" required>
+                            <option value="summarize">Summarize the document</option>
+                            <option value="extract">Extract key information</option>
+                            <option value="complaint">Draft a complaint</option>
+                            <option value="application">Draft an application</option>
+                        </select>
+
+                        <label for="documentInstructions">Additional instructions <span>(optional)</span></label>
+                        <textarea id="documentInstructions" rows="4" maxlength="4000" placeholder="Specify the sections, facts, or format you want to focus on."></textarea>
+
+                        <button type="submit" id="processBtn" class="primary-btn">
+                            <span>Prepare Document Output</span><span>→</span>
+                        </button>
+                        <div id="documentStatus" class="status-message" role="status" aria-live="polite"></div>
+                    </form>
+                </div>
+
+                <section class="output-panel">
+                    <div class="section-heading">
+                        <div><span class="eyebrow">STEP 02</span><h2>Document output</h2></div>
+                        <button type="button" id="copyOutputBtn" class="secondary-btn" disabled>Copy output</button>
+                    </div>
+
+                    <div id="outputPlaceholder" class="placeholder">
+                        <div class="placeholder-symbol">▧</div>
+                        <h3>Your output will appear here</h3>
+                        <p>Select a task and document to begin. Actual PDF processing requires a connected backend endpoint.</p>
+                    </div>
+
+                    <div id="outputResult" class="output-result" hidden>
+                        <div id="outputLabel" class="result-label">DOCUMENT OUTPUT</div>
+                        <div id="outputContent" class="output-content"></div>
+                        <p class="disclaimer">Review all generated text carefully. Confirm facts, legal references, dates, and procedural requirements before using or submitting a document.</p>
+                    </div>
+                </section>
+            </section>
+
+            <section class="draft-note">
+                <span class="note-symbol">i</span>
+                <div><strong>Before using a draft</strong><p>AI-generated text is a starting point, not a verified legal document. Do not submit it without checking the applicable law and facts.</p></div>
+            </section>
+
+            <footer class="page-footer"><span>RAGforLaw</span><span>Document assistance · Verify before relying</span></footer>
+        </div>
+    </main>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

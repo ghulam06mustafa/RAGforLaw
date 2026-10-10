@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign in to RAGforLaw, your legal research assistant.">
+    <title>Login | RAGforLaw</title>
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/auth.js" defer></script>
+    <script src="js/login.js" defer></script>
+</head>
+<body data-auth-page="guest">
+
+<main class="auth-layout">
+    <section class="auth-visual">
+        <a href="index.html" class="brand">
+            <span class="brand-mark">R</span>
+            <span class="brand-copy">
+                <strong>RAGforLaw</strong>
+                <small>Legal Intelligence</small>
+            </span>
+        </a>
+
+        <div class="visual-content">
+            <span class="eyebrow">LEGAL RESEARCH, REIMAGINED</span>
+            <h1>Clarity through law.<br><em>Confidence through research.</em></h1>
+            <p>
+                Access your legal research workspace to explore workplace harassment
+                law and ask questions about your legal documents.
+            </p>
+
+            <div class="visual-document">
+                <div class="document-heading">
+                    <span>RAGforLaw</span>
+                    <span class="document-seal">§</span>
+                </div>
+                <div class="document-rule"></div>
+                <span class="document-kicker">LEGAL RESEARCH · PAKISTAN</span>
+                <h2>Protection Against Harassment of Women at the Workplace Act, 2010</h2>
+                <div class="document-line"></div>
+                <div class="document-line medium"></div>
+                <div class="document-line short"></div>
+                <div class="document-bottom">
+                    <span>DOCUMENT-GROUNDED RESEARCH</span>
+                    <span>R · 01</span>
+                </div>
+            </div>
+        </div>
+
+        <p class="visual-footer">Research carefully. Verify every legal source.</p>
+    </section>
+
+    <section class="auth-main">
+        <a href="index.html" class="mobile-brand">
+            <span class="brand-mark">R</span>
+            <span class="brand-copy">
+                <strong>RAGforLaw</strong>
+                <small>Legal Intelligence</small>
+            </span>
+        </a>
+
+        <div class="auth-card">
+            <span class="eyebrow">WELCOME BACK</span>
+            <h2>Sign in to your workspace</h2>
+            <p class="auth-description">
+                Enter your account details to continue your legal research.
+            </p>
+
+            <form id="loginForm">
+                <label for="email">Email address</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required>
+
+                <div class="password-heading">
+                    <label for="password">Password</label>
+                </div>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required>
+
+                <button type="submit" id="loginBtn" class="submit-btn">
+                    <span id="loginBtnText">Sign In</span>
+                    <span aria-hidden="true">→</span>
+                </button>
+
+                <div id="message" class="form-message" role="alert" aria-live="polite"></div>
+            </form>
+
+            <div class="auth-divider"><span>NEW TO RAGforLaw?</span></div>
+
+            <p class="register-prompt">
+                Don't have an account?
+                <a href="signup.html">Create account <span aria-hidden="true">→</span></a>
+            </p>
+
+            <p class="auth-disclaimer">
+                RAGforLaw provides legal research assistance, not professional legal advice.
+            </p>
+        </div>
+
+        <footer class="auth-footer">
+            <a href="index.html">← Back to home</a>
+            <span>© 2026 RAGforLaw</span>
+        </footer>
+    </section>
+</main>
+
+</body>
+</html>

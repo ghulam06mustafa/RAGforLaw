@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Research Pakistani laws, legal provisions, and supporting sources with RAGforLaw.">
+    <title>Legal Research | RAGforLaw</title>
+    <link rel="stylesheet" href="css/legal-research.css">
+    <script src="js/auth.js" defer></script>
+    <script src="js/legal-research.js" defer></script>
+</head>
+<body data-auth-page="protected">
+
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <div class="brand-mark">R</div>
+                <div class="brand-text">
+                    <h2>RAGforLaw</h2>
+                    <span>Legal Intelligence</span>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <span class="sidebar-label">WORKSPACE</span>
+
+                <nav class="navigation">
+                    <a href="dashboard.html" class="nav-link">
+                        <span class="nav-icon">⌂</span>
+                        <span>Dashboard</span>
+                    </a>
+
+                    <a href="legal-research.html" class="nav-link active" aria-current="page">
+                        <span class="nav-icon">⌕</span>
+                        <span>Legal Research</span>
+                    </a>
+
+                    <a href="case-analysis.html" class="nav-link">
+                        <span class="nav-icon">▤</span>
+                        <span>Case Analysis</span>
+                    </a>
+
+                    <a href="document-assistance.html" class="nav-link">
+                        <span class="nav-icon">▧</span>
+                        <span>Document Assistance</span>
+                    </a>
+
+                    <a href="workspace.html" class="nav-link">
+                        <span class="nav-icon">▣</span>
+                        <span>Personal Workspace</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-note">
+                    <span class="note-symbol">§</span>
+                    <p>Research carefully. Verify every legal source.</p>
+                </div>
+
+                <div class="sidebar-user">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <div class="user-details">
+                        <strong id="userName">User</strong>
+                        <span>Legal Researcher</span>
+                    </div>
+                    <button type="button" id="logoutBtn" class="logout-btn"
+                            aria-label="Log out" title="Log out">↗</button>
+                </div>
+            </div>
+        </aside>
+
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <button type="button" id="menuBtn" class="menu-btn"
+                        aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+                <div class="breadcrumb">
+                    <span>Workspace</span>
+                    <span class="breadcrumb-divider">/</span>
+                    <strong>Legal Research</strong>
+                </div>
+
+                <div class="topbar-status">
+                    <span class="status-dot"></span>
+                    <span>Research workspace</span>
+                </div>
+            </header>
+
+            <div class="page-container">
+
+                <!-- Page Introduction -->
+                <section class="page-intro">
+                    <div class="intro-copy">
+                        <span class="eyebrow">LEGAL KNOWLEDGE & RESEARCH</span>
+                        <h1>Find the law.<br><em>Understand the context.</em></h1>
+                        <p>
+                            Research legal questions, explore relevant provisions,
+                            and review supporting sources in one workspace.
+                        </p>
+                    </div>
+
+                    <div class="intro-seal" aria-hidden="true">
+                        <div class="seal-inner">
+                            <span>§</span>
+                            <small>LEX</small>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Research Search -->
+                <section class="research-panel" aria-labelledby="searchHeading">
+                    <div class="section-heading">
+                        <div>
+                            <span class="eyebrow">RESEARCH QUERY</span>
+                            <h2 id="searchHeading">What would you like to research?</h2>
+                        </div>
+                        <span class="panel-number">01</span>
+                    </div>
+
+                    <form id="researchForm">
+                        <label for="researchQuery">Legal question or research topic</label>
+
+                        <div class="search-box">
+                            <span class="search-symbol" aria-hidden="true">⌕</span>
+                            <textarea
+                                id="researchQuery"
+                                name="query"
+                                rows="3"
+                                maxlength="5000"
+                                placeholder="Example: What protections does Pakistani law provide against harassment at the workplace?"
+                                required
+                            ></textarea>
+                        </div>
+
+                        <div class="search-controls">
+                            <div class="search-hint">
+                                <span>i</span>
+                                <span>Be specific for more relevant results.</span>
+                            </div>
+
+                            <button type="submit" id="researchBtn" class="primary-btn">
+                                <span>Search Legal Sources</span>
+                                <span aria-hidden="true">→</span>
+                            </button>
+                        </div>
+
+                        <div id="researchStatus" class="status-message" role="status"
+                             aria-live="polite"></div>
+                    </form>
+
+                    <div class="suggested-topics">
+                        <span class="suggested-label">TRY A TOPIC</span>
+                        <button type="button" class="topic-chip" data-query="Protection Against Harassment of Women at the Workplace Act, 2010">Workplace harassment</button>
+                        <button type="button" class="topic-chip" data-query="Legal complaint procedure for workplace harassment in Pakistan">Complaint procedure</button>
+                        <button type="button" class="topic-chip" data-query="Legal remedies and penalties under Pakistani workplace harassment law">Legal remedies</button>
+                    </div>
+                </section>
+
+                <!-- Research Results -->
+                <section class="results-section" aria-labelledby="resultsHeading">
+                    <div class="results-header">
+                        <div>
+                            <span class="eyebrow">RESEARCH OUTPUT</span>
+                            <h2 id="resultsHeading">Research findings</h2>
+                        </div>
+
+                        <span class="results-count" id="resultsCount">No results yet</span>
+                    </div>
+
+                    <div id="resultsPlaceholder" class="results-placeholder">
+                        <div class="placeholder-symbol" aria-hidden="true">§</div>
+                        <h3>Your research starts here</h3>
+                        <p>
+                            Enter a legal question above to review the available
+                            research response and supporting sources.
+                        </p>
+                    </div>
+
+                    <div id="resultsContainer" class="results-container" hidden>
+
+                        <article class="answer-card">
+                            <div class="answer-card-header">
+                                <div class="answer-heading">
+                                    <span class="result-icon">§</span>
+                                    <div>
+                                        <span class="eyebrow">AI-GENERATED RESPONSE</span>
+                                        <h3>Research summary</h3>
+                                    </div>
+                                </div>
+
+                                <button type="button" id="copyAnswerBtn" class="text-button">
+                                    Copy response
+                                </button>
+                            </div>
+
+                            <div id="researchAnswer" class="research-answer"></div>
+
+                            <div class="answer-disclaimer">
+                                <span aria-hidden="true">i</span>
+                                <p>
+                                    AI-generated research may contain errors.
+                                    Verify legal provisions and their current
+                                    status against authoritative sources.
+                                </p>
+                            </div>
+                        </article>
+
+                        <section class="sources-section" aria-labelledby="sourcesHeading">
+                            <div class="sources-heading">
+                                <div>
+                                    <span class="eyebrow">EVIDENCE & REFERENCES</span>
+                                    <h3 id="sourcesHeading">Supporting sources</h3>
+                                </div>
+                                <span id="sourceCount" class="source-count">0 sources</span>
+                            </div>
+
+                            <div id="sourcesContainer" class="sources-container">
+                                <div class="empty-sources">
+                                    No supporting sources were returned for this query.
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+
+                <!-- Research Guidance -->
+                <section class="research-guidance">
+                    <div class="guidance-icon" aria-hidden="true">✦</div>
+                    <div>
+                        <h3>Research responsibly</h3>
+                        <p>
+                            Check the original legislation, amendments, jurisdiction,
+                            and source references before relying on research findings.
+                            This tool does not replace advice from a qualified lawyer.
+                        </p>
+                    </div>
+                </section>
+
+                <footer class="page-footer">
+                    <span>RAGforLaw</span>
+                    <span>Legal research assistance · Verify before relying</span>
+                </footer>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Notification -->
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+</body>
+</html>

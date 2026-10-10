@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Case Analysis | RAGforLaw</title>
+
+    <link rel="stylesheet" href="css/case-analysis.css">
+    <script src="js/auth.js" defer></script>
+    <script src="js/case-analysis.js" defer></script>
+</head>
+
+<body data-auth-page="protected">
+<div class="app-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <div class="brand-mark">R</div>
+            <div class="brand-text">
+                <h2>RAGforLaw</h2>
+                <span>Legal Intelligence</span>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <span class="sidebar-label">WORKSPACE</span>
+
+            <nav class="navigation" aria-label="Main navigation">
+                <a href="dashboard.html" class="nav-link">
+                    <span class="nav-icon">⌂</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="legal-research.html" class="nav-link">
+                    <span class="nav-icon">⌕</span>
+                    <span>Legal Research</span>
+                </a>
+
+                <a href="case-analysis.html"
+                   class="nav-link active"
+                   aria-current="page">
+                    <span class="nav-icon">▤</span>
+                    <span>Case Analysis</span>
+                </a>
+
+                <a href="document-assistance.html" class="nav-link">
+                    <span class="nav-icon">▧</span>
+                    <span>Document Assistance</span>
+                </a>
+
+                <a href="workspace.html" class="nav-link">
+                    <span class="nav-icon">▣</span>
+                    <span>Personal Workspace</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-note">
+                <span class="note-symbol">§</span>
+                <p>Analyze facts carefully. Verify every legal source.</p>
+            </div>
+
+            <div class="sidebar-user">
+                <div class="user-avatar" id="userAvatar">U</div>
+
+                <div class="user-details">
+                    <strong id="userName">User</strong>
+                    <span>Legal Researcher</span>
+                </div>
+
+                <button
+                    type="button"
+                    id="logoutBtn"
+                    class="logout-btn"
+                    aria-label="Log out">
+                    ↗
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main content -->
+    <main class="main-content">
+
+        <header class="topbar">
+            <button
+                type="button"
+                id="menuBtn"
+                class="menu-btn"
+                aria-label="Toggle navigation"
+                aria-expanded="false">
+                ☰
+            </button>
+
+            <div class="breadcrumb">
+                <span>Workspace</span>
+                <span class="breadcrumb-divider">/</span>
+                <strong>Case Analysis</strong>
+            </div>
+
+            <div class="topbar-status">
+                <span class="status-dot"></span>
+                <span>Case workspace</span>
+            </div>
+        </header>
+
+        <div class="page-container">
+
+            <!-- Page introduction -->
+            <section class="page-intro">
+                <span class="eyebrow">LEGAL CASE WORKSPACE</span>
+
+                <h1>
+                    Understand the facts.
+                    <br>
+                    <em>Structure the analysis.</em>
+                </h1>
+
+                <p>
+                    Organize case information, identify legal questions,
+                    and prepare a structured analysis for verification.
+                </p>
+            </section>
+
+            <!-- Case form and output -->
+            <section class="case-layout">
+
+                <!-- Case details form -->
+                <form id="caseForm" class="case-form">
+
+                    <div class="section-heading">
+                        <div>
+                            <span class="eyebrow">CASE DETAILS</span>
+                            <h2>Analyze a case</h2>
+                        </div>
+
+                        <span class="step-number">01</span>
+                    </div>
+
+                    <label for="caseTitle">
+                        Case title <span>(optional)</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="caseTitle"
+                        name="caseTitle"
+                        maxlength="200"
+                        placeholder="e.g. Workplace harassment complaint">
+
+                    <label for="jurisdiction">Jurisdiction</label>
+
+                    <select
+                        id="jurisdiction"
+                        name="jurisdiction"
+                        required>
+                        <option value="Pakistan">Pakistan</option>
+                        <option value="Pakistan - Federal">
+                            Pakistan — Federal
+                        </option>
+                        <option value="Pakistan - Provincial">
+                            Pakistan — Provincial (specify in facts)
+                        </option>
+                        <option value="Other / unspecified">
+                            Other / unspecified
+                        </option>
+                    </select>
+
+                    <label for="caseType">Case category</label>
+
+                    <select id="caseType" name="caseType" required>
+                        <option value="Workplace harassment">
+                            Workplace harassment
+                        </option>
+                        <option value="Employment dispute">
+                            Employment dispute
+                        </option>
+                        <option value="Civil matter">Civil matter</option>
+                        <option value="Criminal matter">Criminal matter</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <label for="caseFacts">
+                        Case facts and circumstances
+                    </label>
+
+                    <textarea
+                        id="caseFacts"
+                        name="caseFacts"
+                        rows="9"
+                        maxlength="15000"
+                        required
+                        placeholder="Describe the events, parties' roles, relevant dates, actions taken, and any available evidence. Avoid unnecessary personal or confidential information."></textarea>
+
+                    <div class="field-footer">
+                        <span>
+                            Do not include passwords or unnecessary
+                            sensitive personal data.
+                        </span>
+
+                        <span id="characterCount">0 / 15000</span>
+                    </div>
+
+                    <label for="legalQuestion">
+                        Main legal question <span>(optional)</span>
+                    </label>
+
+                    <textarea
+                        id="legalQuestion"
+                        name="legalQuestion"
+                        rows="3"
+                        maxlength="3000"
+                        placeholder="What legal issue should the analysis focus on?"></textarea>
+
+                    <button
+                        type="submit"
+                        id="analyzeBtn"
+                        class="primary-btn">
+                        <span>Prepare Case Analysis</span>
+                        <span aria-hidden="true">→</span>
+                    </button>
+
+                    <div
+                        id="caseStatus"
+                        class="status-message"
+                        role="status"
+                        aria-live="polite"></div>
+                </form>
+
+                <!-- Analysis output -->
+                <section class="analysis-panel" aria-labelledby="assessmentTitle">
+
+                    <div class="section-heading">
+                        <div>
+                            <span class="eyebrow">ANALYSIS OUTPUT</span>
+                            <h2 id="assessmentTitle">Case assessment</h2>
+                        </div>
+
+                        <span class="step-number">02</span>
+                    </div>
+
+                    <!-- Initial placeholder -->
+                    <div id="analysisPlaceholder" class="placeholder">
+                        <div class="placeholder-symbol">§</div>
+
+                        <h3>Your analysis will appear here</h3>
+
+                        <p>
+                            Enter the case facts and submit the form.
+                            The AI will retrieve relevant passages from
+                            your uploaded legal documents and prepare
+                            a structured assessment.
+                        </p>
+                    </div>
+
+                    <!-- Generated analysis -->
+                    <div id="analysisResult" hidden>
+
+                        <div class="result-toolbar">
+                            <span class="result-label">
+                                GENERATED ANALYSIS
+                            </span>
+
+                            <button
+                                type="button"
+                                id="copyAnalysisBtn"
+                                class="secondary-btn">
+                                Copy analysis
+                            </button>
+                        </div>
+
+                        <div
+                            id="analysisContent"
+                            class="analysis-content"
+                            aria-live="polite"></div>
+
+                        <!-- Supporting sources returned by FastAPI -->
+                        <section class="analysis-sources"
+                                 aria-labelledby="sourcesTitle">
+                            <h3 id="sourcesTitle">
+                                Supporting legal sources
+                            </h3>
+
+                            <div id="analysisSources">
+                                <p>
+                                    Supporting passages will appear here
+                                    when returned by the backend.
+                                </p>
+                            </div>
+                        </section>
+
+                        <p class="disclaimer">
+                            This output is informational, not legal advice.
+                            Verify statutes, amendments, jurisdiction,
+                            evidence, and applicable procedures with
+                            authoritative sources or a qualified lawyer.
+                        </p>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Analysis guide -->
+            <section class="analysis-guide">
+                <h3>What a structured analysis should cover</h3>
+
+                <div class="guide-grid">
+                    <div>
+                        <strong>01 · Facts</strong>
+                        <p>Relevant events, dates, parties, and evidence.</p>
+                    </div>
+
+                    <div>
+                        <strong>02 · Legal issues</strong>
+                        <p>Questions that require legal interpretation.</p>
+                    </div>
+
+                    <div>
+                        <strong>03 · Applicable law</strong>
+                        <p>
+                            Potentially relevant provisions requiring
+                            verification.
+                        </p>
+                    </div>
+
+                    <div>
+                        <strong>04 · Next steps</strong>
+                        <p>Information gaps and possible procedural options.</p>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="page-footer">
+                <span>RAGforLaw</span>
+                <span>
+                    Legal information assistance · Verify before relying
+                </span>
+            </footer>
+
+        </div>
+    </main>
+</div>
+
+<div
+    id="toast"
+    class="toast"
+    role="status"
+    aria-live="polite"></div>
+
+</body>
+</html>

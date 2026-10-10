@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RAGforLaw — AI-powered legal research and assistance.">
+    <title>Dashboard | RAGforLaw</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/auth.js" defer></script>
+    <script src="js/dashboard.js" defer></script>
+</head>
+<body data-auth-page="protected">
+<div class="app-layout">
+
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <div class="brand-mark">R</div>
+            <div class="brand-text">
+                <h2>RAGforLaw</h2>
+                <span>Legal Intelligence</span>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <span class="sidebar-label">WORKSPACE</span>
+            <nav class="navigation" aria-label="Main navigation">
+                <a href="./dashboard.html" class="nav-link active" aria-current="page">
+                    <span class="nav-icon">⌂</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="./legal-research.html" class="nav-link">
+                    <span class="nav-icon">⌕</span>
+                    <span>Legal Research</span>
+                </a>
+                <a href="./case-analysis.html" class="nav-link">
+                    <span class="nav-icon">▤</span>
+                    <span>Case Analysis</span>
+                </a>
+                <a href="./document-assistance.html" class="nav-link">
+                    <span class="nav-icon">▧</span>
+                    <span>Document Assistance</span>
+                </a>
+                <a href="./workspace.html" class="nav-link">
+                    <span class="nav-icon">▣</span>
+                    <span>Personal Workspace</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-note">
+                <span class="note-symbol">§</span>
+                <p>Research carefully. Verify every legal source.</p>
+            </div>
+
+            <div class="sidebar-user">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <div class="user-details">
+                    <strong id="userName">User</strong>
+                    <span>Legal Assistant</span>
+                </div>
+                <button type="button" id="logoutBtn" class="logout-btn"
+                        aria-label="Log out" title="Log out">↗</button>
+            </div>
+        </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="main-content">
+        <header class="topbar">
+            <button type="button" id="menuBtn" class="menu-btn"
+                    aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+            <div class="breadcrumb">
+                <span>Workspace</span>
+                <span class="breadcrumb-divider">/</span>
+                <strong>Dashboard</strong>
+            </div>
+
+            <div class="topbar-status">
+                <span class="status-dot"></span>
+                <span>Legal workspace</span>
+            </div>
+        </header>
+
+        <div class="page-container">
+
+            <section class="welcome-section">
+                <div class="welcome-copy">
+                    <span class="eyebrow">YOUR LEGAL WORKSPACE</span>
+                    <h1>Welcome back, <em id="welcomeName">Researcher</em></h1>
+                    <p>
+                        Research Pakistani law, explore legal questions,
+                        and organize your legal work in one place.
+                    </p>
+                    <a href="./legal-research.html" class="primary-btn">
+                        <span>Start Legal Research</span>
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+
+                <div class="welcome-seal" aria-hidden="true">
+                    <div class="seal-inner">
+                        <span>§</span>
+                        <small>LEX</small>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features-section">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">EXPLORE YOUR WORKSPACE</span>
+                        <h2>Legal tools</h2>
+                    </div>
+                </div>
+
+                <div class="feature-grid">
+                    <a href="./legal-research.html" class="feature-card">
+                        <div class="feature-icon">⌕</div>
+                        <span class="feature-label">RESEARCH</span>
+                        <h3>Legal Research</h3>
+                        <p>Explore legal questions, provisions, and supporting sources.</p>
+                        <span class="feature-action">Open research <span>→</span></span>
+                    </a>
+
+                    <a href="./case-analysis.html" class="feature-card">
+                        <div class="feature-icon">▤</div>
+                        <span class="feature-label">ANALYSIS</span>
+                        <h3>Case Analysis</h3>
+                        <p>Examine case facts and potentially relevant legal provisions.</p>
+                        <span class="feature-action">Analyze a case <span>→</span></span>
+                    </a>
+
+                    <a href="./document-assistance.html" class="feature-card">
+                        <div class="feature-icon">▧</div>
+                        <span class="feature-label">DOCUMENTS</span>
+                        <h3>Document Assistance</h3>
+                        <p>Prepare document summaries, complaints, and applications.</p>
+                        <span class="feature-action">Open documents <span>→</span></span>
+                    </a>
+
+                    <a href="./workspace.html" class="feature-card">
+                        <div class="feature-icon">▣</div>
+                        <span class="feature-label">MY WORK</span>
+                        <h3>Personal Workspace</h3>
+                        <p>Organize saved research, conversations, and documents.</p>
+                        <span class="feature-action">Open workspace <span>→</span></span>
+                    </a>
+                </div>
+            </section>
+
+            <section class="assistant-section" id="assistant">
+                <div class="assistant-heading">
+                    <div>
+                        <span class="eyebrow">AI-POWERED LEGAL SUPPORT</span>
+                        <h2>Legal Assistant</h2>
+                        <p>Ask a question or upload a PDF to begin.</p>
+                    </div>
+                    <button type="button" id="newChatBtn" class="text-button">
+                        + New conversation
+                    </button>
+                </div>
+
+                <div class="assistant-layout">
+                    <div class="chat-panel">
+                        <div class="chat-header">
+                            <div class="chat-avatar">§</div>
+                            <div>
+                                <strong>RAGforLaw Assistant</strong>
+                                <span>Legal information assistant</span>
+                            </div>
+                            <button type="button" id="clearChatBtn" class="clear-chat-btn">
+                                Clear chat
+                            </button>
+                        </div>
+
+                        <div class="chat-messages" id="chatMessages"
+                             aria-live="polite" aria-label="Conversation">
+                            <div class="message assistant-message">
+                                <div class="message-avatar">§</div>
+                                <div class="message-content">
+                                    <div class="message-author">RAGforLaw</div>
+                                    <div class="message-bubble">
+                                        Welcome. What legal question can I help you explore?
+                                        You can also upload a PDF for document-based assistance.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="suggested-questions">
+                            <span class="suggested-label">SUGGESTED QUESTIONS</span>
+                            <button type="button" class="question-chip"
+                                data-question="What is the Protection Against Harassment of Women at the Workplace Act, 2010?">
+                                Explain the workplace harassment law
+                            </button>
+                            <button type="button" class="question-chip"
+                                data-question="What is the complaint procedure under Pakistani workplace harassment law?">
+                                Complaint procedure
+                            </button>
+                            <button type="button" class="question-chip"
+                                data-question="What legal protections are available under Pakistani workplace harassment law?">
+                                Legal protections
+                            </button>
+                        </div>
+
+                        <form id="chatForm" class="chat-form">
+                            <textarea id="messageInput" name="message" rows="1"
+                                maxlength="10000" placeholder="Ask your legal question..."
+                                aria-label="Your legal question" required></textarea>
+                            <button type="submit" id="sendBtn" class="send-btn"
+                                    aria-label="Send message">→</button>
+                        </form>
+
+                        <div id="chatStatus" class="chat-status"
+                             role="status" aria-live="polite"></div>
+
+                        <p class="chat-disclaimer">
+                            AI-generated information may be inaccurate.
+                            Verify legal sources before relying on an answer.
+                        </p>
+                    </div>
+
+                    <aside class="upload-panel">
+                        <div class="upload-panel-heading">
+                            <span class="eyebrow">DOCUMENT INPUT</span>
+                            <h3>Upload a legal PDF</h3>
+                            <p>Choose a PDF document to submit to the backend.</p>
+                        </div>
+
+                        <form id="uploadForm">
+                            <label for="pdfFile" class="upload-dropzone">
+                                <span class="upload-icon">↑</span>
+                                <strong>Choose a PDF file</strong>
+                                <span>Click here to browse your files</span>
+                                <span class="upload-format">PDF format</span>
+                            </label>
+
+                            <input type="file" id="pdfFile" name="file"
+                                   accept=".pdf,application/pdf" hidden>
+
+                            <div id="selectedFile" class="selected-file" hidden>
+                                <div class="file-icon">PDF</div>
+                                <div class="file-details">
+                                    <strong id="selectedFileName">document.pdf</strong>
+                                    <span id="selectedFileSize">0 KB</span>
+                                </div>
+                                <button type="button" id="removeFileBtn"
+                                        class="remove-file-btn" aria-label="Remove selected file">
+                                    ×
+                                </button>
+                            </div>
+
+                            <button type="submit" id="uploadBtn" class="upload-btn">
+                                Upload Document
+                            </button>
+                            <div id="uploadStatus" class="upload-status"
+                                 role="status" aria-live="polite"></div>
+                        </form>
+
+                        <div class="upload-note">
+                            <span>i</span>
+                            <p>Only upload documents you are authorized to use. Confirm processing through the backend response.</p>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <footer class="page-footer">
+                <span>RAGforLaw</span>
+                <span>Legal research assistance · Verify before relying</span>
+            </footer>
+
+        </div>
+    </main>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+</body>
+</html>
